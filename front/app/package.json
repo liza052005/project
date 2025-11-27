@@ -16,8 +16,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "REACT_APP_API_URL=https://clipnot-backend.onrender.com react-scripts build",
-    "test": "react-scripts test",
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build:prod": "npm run build && react-scripts build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
