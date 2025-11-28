@@ -15,6 +15,16 @@ const Dashboard = () => {
     const interval = setInterval(loadVideos, 5000); // Обновляем каждые 5 секунд
     return () => clearInterval(interval);
   }, []);
+// В компоненте Header или App
+const [theme, setTheme] = useState('light');
+
+const toggleTheme = () => {
+  const newTheme = theme === 'light' ? 'dark' : 'light';
+  setTheme(newTheme);
+  document.documentElement.setAttribute('data-theme', newTheme);
+};
+
+// В рендере
 
   const loadVideos = async () => {
     try {
@@ -50,12 +60,17 @@ const Dashboard = () => {
   }
 
   return (
+    
     <div className="dashboard">
       <header className="dashboard-header">
+        
         <div>
           <h1>ClipNote</h1>
           <p>Добро пожаловать, {user?.username}!</p>
         </div>
+        <button className="theme-toggle-btn" onClick={toggleTheme}>
+  {theme === 'light' ? '🌙' : '☀️'}
+</button>
         <button onClick={logout} className="logout-btn">
           Выйти
         </button>
